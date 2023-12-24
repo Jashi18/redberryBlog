@@ -1,0 +1,15 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: FiraGO;
+}
+
+@font-face {
+  font-family: "FiraGO";
+  font-weight: 500;
+  src: local("FiraGO"), url(./assets/Fonts/FiraGO-Regular.otf) format("woff");
+}
+textarea:focus,
+input:focus {
+  outline: none;
+}
