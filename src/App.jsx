@@ -1,12 +1,15 @@
-import Categories from "./Categories";
-import Header from "./Header";
+import { Route, BrowserRouter, Routes } from "react-router-dom";
+import MainPage from "./MainPage";
+import AddBlog from "./AddBlog";
 
 function App() {
   return (
-    <div>
-      <Header />
-      <Categories />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="addBlog" element={<AddBlog />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

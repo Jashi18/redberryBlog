@@ -4,6 +4,7 @@ import axios from "axios";
 import Logo from "./assets/Logo.svg";
 import Image from "./assets/Image.svg";
 import Mark from "./assets/Mark.svg";
+import { Link } from "react-router-dom";
 
 // Set the base URL for Axios
 const API_BASE_URL = "https://api.blog.redberryinternship.ge/api";
@@ -14,6 +15,10 @@ function Header() {
   const [emailError, setEmailError] = useState("");
   const [token, setToken] = useState(localStorage.getItem("token") || "");
   const [loginSuccess, setLoginSuccess] = useState(false);
+
+  const handleAddBlogClick = () => {
+    history.push("/addBlog"); // Navigate to AddBlog when the button is clicked
+  };
 
   // Set the app element for accessibility reasons
   Modal.setAppElement("#root");
@@ -54,7 +59,6 @@ function Header() {
       if (response.status === 204) {
         console.log("User logged in successfully");
         setLoginSuccess(true); // Indicate that the login was successful
-        setEmailError(""); // Clear any existing errors
       } else {
         setEmailError("Email not found or error occurred");
         setLoginSuccess(false); // Reset the success flag
@@ -90,7 +94,9 @@ function Header() {
       >
         <img src={Logo} alt="Redberry Logo" style={{ marginLeft: "60px" }} />
         {loginSuccess && !modalIsOpen ? (
-          <button
+          <Link
+            to={"/addBlog"}
+            onClick={handleAddBlogClick}
             style={{
               padding: "10px 20px",
               backgroundColor: "#5D37F3",
@@ -102,7 +108,7 @@ function Header() {
             }}
           >
             ბლოგის დამატება
-          </button>
+          </Link>
         ) : (
           <button
             onClick={openModal}
